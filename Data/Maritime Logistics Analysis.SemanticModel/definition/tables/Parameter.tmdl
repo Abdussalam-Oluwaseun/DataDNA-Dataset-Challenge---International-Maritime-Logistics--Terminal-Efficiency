@@ -1,0 +1,51 @@
+table Parameter
+	lineageTag: b6a62343-5099-4d2f-a308-58602172401f
+
+	column Parameter
+		lineageTag: 15758cc6-5686-40eb-bbc3-c5e6abd419d1
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: 8cdb1bc0-803b-43d8-968c-121194437d6b
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 050bab51-d9cc-46b3-8396-eb79e0d5155a
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Parameter = calculated
+		mode: import
+		source =
+				{
+				    ("Total Move_duration", NAMEOF('_measures'[Total Move_duration]), 0),
+				    ("Total Containers", NAMEOF('_measures'[Total Containers]), 1),
+				    ("Total Movements", NAMEOF('_measures'[Total Movements]), 2),
+				    ("Avg Move Duration (days)", NAMEOF('_measures'[Avg Move Duration (days)]), 3),
+				    ("Throughput", NAMEOF('_measures'[Throughput]), 4)
+				}
+
+	annotation PBI_Id = 57c8e55ebd7f456b9e70dba9acfb5c14
+

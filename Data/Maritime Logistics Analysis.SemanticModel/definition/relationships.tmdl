@@ -1,0 +1,12 @@
+relationship AutoDetected_3e177a40-c5fc-4af4-aa10-3c66b2bfc107
+	fromColumn: fact_cargo_movements.terminal_id
+	toColumn: dim_terminal.terminal_id
+
+relationship AutoDetected_3b6a1a18-3da5-40f7-b1e9-545192c0ec98
+	fromColumn: fact_cargo_movements.vessel_key
+	toColumn: dim_vessel.vessel_key
+
+relationship 85499767-efd2-050b-88f2-48772e1cbdb0
+	fromColumn: fact_cargo_movements.date
+	toColumn: dim_time.date
+

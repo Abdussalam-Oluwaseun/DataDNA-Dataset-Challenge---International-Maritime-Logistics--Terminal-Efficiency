@@ -1,0 +1,62 @@
+{
+  "name": "CY23SU02",
+  "dataColors": [
+    "#2C2C2C",
+    "#C8410A",
+    "#1A1F2E",
+    "#6B007B",
+    "#E645AB",
+    "#4A2D75",
+    "#1AAB40",
+    "#10433F"
+  ],
+  "foreground": "#131312",
+  "background": "#FFFFFF",
+  "foregroundNeutralSecondary": "#6C6966",
+  "backgroundLight": "#E5E0DA",
+  "foregroundNeutralTertiary": "#ABA7A2",
+  "backgroundNeutral": "#C6C2BE",
+  "tableAccent": "#118DFF",
+  "maximum": "#4A2D75",
+  "center": "#1AAB40",
+  "minimum": "#E645AB",
+  "bad": "#E66C37",
+  "neutral": "#6B007B",
+  "good": "#12239E",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "transparency": 100
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 100
+          }
+        ]
+      }
+    }
+  },
+  "textClasses": {
+    "label": {
+      "fontSize": 12
+    },
+    "title": {
+      "fontSize": 15
+    },
+    "header": {
+      "fontSize": 15
+    }
+  }
+}

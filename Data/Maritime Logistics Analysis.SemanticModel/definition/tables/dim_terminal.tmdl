@@ -1,0 +1,170 @@
+table dim_terminal
+	lineageTag: 72437893-288a-4a17-afde-7df263229740
+
+	column terminal_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 84f436fe-1263-4ac4-9692-d65c249226f0
+		summarizeBy: none
+		sourceColumn: terminal_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column terminal_name
+		dataType: string
+		lineageTag: c31a7e06-0279-4793-8e22-92a9e5389265
+		summarizeBy: none
+		sourceColumn: terminal_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column regional_hub
+		dataType: string
+		lineageTag: 3b5dc984-e4de-4bbe-9af8-cf91175fabce
+		summarizeBy: none
+		sourceColumn: regional_hub
+
+		annotation SummarizationSetBy = Automatic
+
+	column longitude
+		dataType: double
+		lineageTag: 6f3cf490-02fe-44c8-8847-ef35764a22d6
+		summarizeBy: none
+		sourceColumn: longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column latitude
+		dataType: double
+		lineageTag: 54c93443-6638-4a36-b562-0de2d08838d9
+		summarizeBy: none
+		sourceColumn: latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Terminal Capacity' = ```
+			
+			VAR _movements = RELATEDTABLE(fact_cargo_movements)
+			
+			VAR Density =
+			    DIVIDE(
+			        COUNTROWS(_movements),
+			        COUNTROWS(
+			            DISTINCT(
+			                SELECTCOLUMNS(_movements, "date", fact_cargo_movements[date])
+			            )
+			        )
+			    )
+			
+			VAR Volume = 
+			    DIVIDE(
+			        SUMX(_movements, fact_cargo_movements[container_count]),
+			        COUNTROWS(_movements)
+			    )
+			
+			VAR TerminalAvgDuration = 
+			    AVERAGEX(_movements, fact_cargo_movements[move_duration (days)])
+			
+			VAR GlobalAvgDuration = 
+			    CALCULATE(
+			        AVERAGEX(fact_cargo_movements, fact_cargo_movements[move_duration (days)]),
+			        ALL(dim_terminal)
+			    )
+			
+			VAR Efficiency = 
+			    DIVIDE(GlobalAvgDuration, TerminalAvgDuration)  -- >1 means faster than global = higher capacity
+			
+			RETURN
+			Density * Volume * Efficiency
+			```
+		formatString: 0
+		lineageTag: 8fecc793-9499-4819-afdf-7e7632e52087
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'operational efficiency' =
+			
+			VAR _movements = RELATEDTABLE(fact_cargo_movements)
+			
+			VAR Efficiency = -- operational efficiency
+			    DIVIDE(
+			        CALCULATE(
+			            AVERAGEX(fact_cargo_movements, fact_cargo_movements[move_duration (days)]),
+			            ALL(dim_terminal)
+			        ),
+			        AVERAGEX(_movements, fact_cargo_movements[move_duration (days)])
+			    )
+			
+			RETURN
+			 Efficiency
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3e61a1f7-bd19-4756-9dbc-b23d16c420bc
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Efficiency Gauge SVG' = ```
+			
+			VAR _Efficiency = [operational efficiency] -- Your existing measure
+			
+			-- Scaling logic: Cap at 200% for visual consistency, minimum 0%
+			VAR _Score = MIN(MAX(_Efficiency, 0),2)
+			VAR _WidthPercent = (_Score / 1) * 100 -- Scale 0-2 to 0-100 pixels
+			
+			-- Dynamic Color
+			VAR _BarColor = 
+			    SWITCH(TRUE(),
+			        _Efficiency >= 0.9 , "#27AE60", -- High Efficiency (Green)
+			        _Efficiency >= 0.75, "#F1C40F", -- Target Range (Yellow)
+			        "#E74C3C"                      -- Low Efficiency (Red)
+			    )
+			
+			-- SVG Components
+			VAR _CanvasWidth = 150
+			VAR _CanvasHeight = 30
+			VAR _BarHeight = 12
+			VAR _Text = FORMAT(_Efficiency, "0%")
+			
+			RETURN
+			"data:image/svg+xml;utf8," & 
+			"<svg xmlns='http://www.w3.org/2000/svg' width='" & _CanvasWidth & "' height='" & _CanvasHeight & "'>" &
+			  -- Background Track
+			  "<rect x='0' y='6' width='100' height='" & _BarHeight & "' rx='6' fill='#E0E0E0' />" &
+			  
+			  -- Progress Bar
+			  "<rect x='0' y='6' width='" & _WidthPercent & "' height='" & _BarHeight & "' rx='6' fill='" & _BarColor & "' />" &
+			  
+			  -- Percentage Text
+			  "<text x='105' y='16' font-family='Segoe UI, Arial' font-size='15' font-weight='600' fill='#333'>" & 
+			    _Text & 
+			  "</text>" &
+			"</svg>"
+			```
+		lineageTag: 0d44180f-504d-4020-811b-8b6d95e66840
+		dataCategory: ImageUrl
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_terminal = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("\\Mac\Home\Downloads\DataDNA Dataset Challenge - International Maritime Logistics  Terminal Efficiency\Data\International Maritime Logistics Terminal Efficiency.xlsx"), null, true),
+				    dim_terminal_Sheet = Source{[Item="dim_terminal",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(dim_terminal_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"terminal_id", Int64.Type}, {"terminal_name", type text}, {"regional_hub", type text}, {"longitude", type number}, {"latitude", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

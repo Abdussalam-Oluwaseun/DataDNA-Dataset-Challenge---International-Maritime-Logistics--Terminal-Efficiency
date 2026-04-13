@@ -1,0 +1,63 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "164150b6a4c989efd25a",
+  "displayName": "Trend",
+  "displayOption": "FitToPage",
+  "height": 908,
+  "width": 1580,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Frame 1171275924.svg'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "Frame_11712759249849334993272287.svg"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Normal'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "66f6312987042b463c8e",
+      "target": "9d655a81930968c04dd1",
+      "type": "NoFilter"
+    },
+    {
+      "source": "66f6312987042b463c8e",
+      "target": "ab58a70b7302a76863ba",
+      "type": "NoFilter"
+    }
+  ]
+}

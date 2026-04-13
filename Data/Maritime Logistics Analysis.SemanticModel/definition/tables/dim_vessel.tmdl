@@ -1,0 +1,133 @@
+table dim_vessel
+	lineageTag: 643dffc1-ebfc-4af8-9497-dfcba0a4e287
+
+	column vessel_key
+		dataType: string
+		lineageTag: 5c6f2f56-a758-419a-bd01-bb50142f19c3
+		summarizeBy: none
+		sourceColumn: vessel_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column vessel_id
+		dataType: int64
+		formatString: 0
+		lineageTag: f31ca0f2-7cba-439c-b3b3-6eb1958158a7
+		summarizeBy: none
+		sourceColumn: vessel_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column vessel_name
+		dataType: string
+		lineageTag: d6b9583a-79ed-4069-9c58-96e65b40a019
+		summarizeBy: none
+		sourceColumn: vessel_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column vessel_category
+		dataType: string
+		lineageTag: 2f4c5064-8f02-4e8b-8417-44fe0ab404e7
+		summarizeBy: none
+		sourceColumn: vessel_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column build_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 613fe852-191b-4db4-b069-cac15503b14e
+		summarizeBy: none
+		sourceColumn: build_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Avg Move Duration (Category Benchmark)' =
+			
+			CALCULATE(
+			    AVERAGE(fact_cargo_movements[move_duration (days)]),
+			    FILTER(
+			        ALL(fact_cargo_movements),
+			        RELATED(dim_vessel[vessel_category]) = dim_vessel[vessel_category]
+			    )
+			)
+			-- since the route does'nt change we use this as benchmark
+		formatString: 0
+		lineageTag: 02cd8326-6b72-42c5-be22-7efca78fcf13
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'vessel age' =
+			
+			[crt_year] - dim_vessel[build_year]
+		formatString: 0
+		lineageTag: 557f71c6-efa1-47c9-a8c8-9ec4de6915e6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Vessel Status' = ```
+			
+			VAR LastGlobalDate = 
+			    CALCULATE(
+			        MAX(fact_cargo_movements[date]),
+			        ALL(fact_cargo_movements)
+			    )
+			
+			VAR LastVesselDate = 
+			    CALCULATE(
+			        MAX(fact_cargo_movements[date]),
+			        RELATEDTABLE(fact_cargo_movements)
+			    )
+			
+			VAR DaysSinceActive = LastGlobalDate - LastVesselDate
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    DaysSinceActive <= 180,  "Active",
+			    DaysSinceActive <= 270,  "Inactive",
+			    "Dormant"
+			)
+			```
+		lineageTag: 7db731db-3c34-4218-be14-555bf666d84f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'vessel capacity' =
+			
+			CALCULATE(
+			    AVERAGE(fact_cargo_movements[container_count]),
+			    FILTER(
+			        ALL(fact_cargo_movements),
+			        RELATED(dim_vessel[vessel_category]) = dim_vessel[vessel_category]
+			    )
+			)
+		formatString: 0
+		lineageTag: 931ff2bc-5213-4614-a8d3-70cfb9511c61
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	partition dim_vessel = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("\\Mac\Home\Downloads\DataDNA Dataset Challenge - International Maritime Logistics  Terminal Efficiency\Data\International Maritime Logistics Terminal Efficiency.xlsx"), null, true),
+				    dim_vessel_Sheet = Source{[Item="dim_vessel",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(dim_vessel_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"vessel_key", type text}, {"vessel_id", Int64.Type}, {"vessel_name", type text}, {"vessel_category", type text}, {"build_year", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

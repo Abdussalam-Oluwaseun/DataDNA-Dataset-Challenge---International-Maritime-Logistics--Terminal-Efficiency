@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Maritime Logistics Analysis"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d919ede0-314b-4ed7-b3e0-62079a4b5b50"
+  }
+}

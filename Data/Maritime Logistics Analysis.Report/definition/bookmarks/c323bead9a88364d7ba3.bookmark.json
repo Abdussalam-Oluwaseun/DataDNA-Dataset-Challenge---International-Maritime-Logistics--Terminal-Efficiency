@@ -1,0 +1,890 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "show vessels",
+  "name": "c323bead9a88364d7ba3",
+  "options": {
+    "applyOnlyToTargetVisuals": true,
+    "targetVisualNames": [
+      "9c85037e260e11da804e",
+      "e303c52d0403dd694c0a",
+      "59de2cc34e59302c594a",
+      "dc5a4196013de79b5036",
+      "675f048442c4262b85b5",
+      "1e669589806096a1603a",
+      "419c868640288e33e708",
+      "95d22bee2eba260705e5",
+      "2864af00d6509d5a5826",
+      "0a3158d51ea0cc26436e",
+      "6d60156195e303995330",
+      "02bd0c6e3c0bc2e3cd65",
+      "77e52a96ce7ce11099ee",
+      "6b8d7f8ad8773b400983"
+    ],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "e9076c3015d027b1b0f0",
+    "sections": {
+      "e9076c3015d027b1b0f0": {
+        "visualContainers": {
+          "d66aea65ad86aa0714c3": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "0abdd3334e0163666643",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Total Movements"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Total Movements"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "dd7ef1c47549135c7158": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "df78b9c62128b987167e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Total Vessel"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Total Vessel"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "12ba175307aa6b2124d1": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "8caff25704a3c04040ae",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "active vessels"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "active vessels"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "a3873ac77b68537700be": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "77dd98c0447b5c0e8409",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Inactive vessels"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Inactive vessels"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "3ebc786fdb8871555460": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3e54703d03a7bd87e399",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Count of Bottlenecks"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Count of Bottlenecks"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "0a3158d51ea0cc26436e": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "ca03a897e226c36531e1",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_terminal"
+                        }
+                      },
+                      "Property": "regional_hub"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_terminal"
+                        }
+                      },
+                      "Property": "regional_hub"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "6d60156195e303995330": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "0e77261269d0026ceb8e",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_terminal"
+                        }
+                      },
+                      "Property": "regional_hub"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_terminal"
+                        }
+                      },
+                      "Property": "regional_hub"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "02bd0c6e3c0bc2e3cd65": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "77e52a96ce7ce11099ee": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "6b8d7f8ad8773b400983": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "120d83f693573c60aa26",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fact_cargo_movements"
+                            }
+                          },
+                          "Property": "container_count"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "dfcf0b0c6370dba00d2c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_vessel"
+                        }
+                      },
+                      "Property": "vessel age"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "3fdc232054918cd58108",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Total Movements"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "b2733400102b02059489",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_vessel"
+                        }
+                      },
+                      "Property": "Vessel Status"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c22f2e91c6037ea4117d",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Throughput"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e1fae747ea1059d48d3b",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Avg Move Duration (days)"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "27c45fc945c984386eb0",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_vessel"
+                        }
+                      },
+                      "Property": "vessel_name"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fact_cargo_movements"
+                            }
+                          },
+                          "Property": "container_count"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "3643aee5e736ac57de22": {
+            "singleVisual": {
+              "visualType": "pageNavigator",
+              "objects": {}
+            }
+          },
+          "fa95903edec09704a508": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "9e7f7562abcea53adae4",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_terminal"
+                        }
+                      },
+                      "Property": "regional_hub"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_terminal"
+                        }
+                      },
+                      "Property": "regional_hub"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "a3e837b10478033b944d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "03eec766ce8a6725d508",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_time"
+                        }
+                      },
+                      "Property": "fiscal_year"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_time"
+                        }
+                      },
+                      "Property": "fiscal_year"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "59de2cc34e59302c594a": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "ac169f1e2d8a3db015a3",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_cargo_movements"
+                        }
+                      },
+                      "Property": "movement_id"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a50516abcc604c7b3785",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_vessel"
+                        }
+                      },
+                      "Property": "vessel_name"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "eab33512a3785067657e",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_vessel"
+                        }
+                      },
+                      "Property": "vessel_category"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "422f3ceeeea349c9eab2",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_terminal"
+                        }
+                      },
+                      "Property": "terminal_name"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "8bfc8d30032961c76924",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_cargo_movements"
+                        }
+                      },
+                      "Property": "date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f3552d4907ed1ada1ec4",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_cargo_movements"
+                        }
+                      },
+                      "Property": "Duration Flag"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "dbacffc9c3bb2be2c1c4",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_cargo_movements"
+                        }
+                      },
+                      "Property": "capacity flag"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "28dcc029780d5c5c5e43",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fact_cargo_movements"
+                            }
+                          },
+                          "Property": "container_count"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "1708104d32057bebda80",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_time"
+                        }
+                      },
+                      "Property": "shift"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "ffcf2245c605024c68d3",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fact_cargo_movements"
+                            }
+                          },
+                          "Property": "move_duration (days)"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e9a15757ead8e1a05176",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_cargo_movements"
+                        }
+                      },
+                      "Property": "Performance Flag"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_vessel"
+                        }
+                      },
+                      "Property": "vessel_category"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "95d22bee2eba260705e5": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "e303c52d0403dd694c0a": {
+            "isHidden": false
+          },
+          "9c85037e260e11da804e": {
+            "isHidden": true
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              },
+              "visible": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

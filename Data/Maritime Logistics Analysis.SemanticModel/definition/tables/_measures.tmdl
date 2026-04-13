@@ -1,0 +1,212 @@
+table _measures
+	lineageTag: ddd32feb-5dad-443a-b673-da4ca6eab6d4
+
+	measure 'Total Movements' = COUNTROWS(fact_cargo_movements)
+		formatString: #,0
+		lineageTag: a380f7cb-e6ce-4d39-ba3a-75d9f35e9ac2
+
+	measure 'Avg Move Duration (days)' = AVERAGE(fact_cargo_movements[move_duration (days)])
+		formatString: 0.0
+		lineageTag: 5a0ceb32-c8a7-4e93-a182-bbb4f58549ed
+
+	measure 'Total Containers' = SUM(fact_cargo_movements[container_count])
+		formatString: #,0
+		lineageTag: eae6b600-9808-48c8-a1d4-2aa6f3c90ef7
+
+	measure crt_year = MAX(dim_time[fiscal_year])
+		formatString: 0
+		lineageTag: 534c871f-61be-4337-bf47-09f06e3dfef7
+
+	measure 'Total Containers MoM%' =
+			
+			VAR __PREV_MONTH = CALCULATE([Total Containers], DATEADD('dim_time'[date], -1, MONTH))
+			RETURN
+				DIVIDE([Total Containers] - __PREV_MONTH, __PREV_MONTH)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 60250d86-a4b0-4f7b-90ee-5b726ba715a4
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "MonthOverMonth"
+				}
+
+		changedProperty = FormatString
+
+	measure 'Total Movements MoM%' =
+			
+			VAR __PREV_MONTH = CALCULATE([Total Movements], DATEADD('dim_time'[date], -1, MONTH))
+			RETURN
+				DIVIDE([Total Movements] - __PREV_MONTH, __PREV_MONTH)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: eaff608e-9b6e-4c6e-a248-6c20c128234a
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "MonthOverMonth"
+				}
+
+		changedProperty = FormatString
+
+	measure 'Avg Move Duration (days) MoM%' =
+			
+			VAR __PREV_MONTH = CALCULATE([Avg Move Duration (days)], DATEADD('dim_time'[date], -1, MONTH))
+			RETURN
+				DIVIDE([Avg Move Duration (days)] - __PREV_MONTH, __PREV_MONTH)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 72f2ddbe-49f7-494d-8886-0aea9aa986f0
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "MonthOverMonth"
+				}
+
+		changedProperty = FormatString
+
+	measure Throughput =
+			
+			DIVIDE(
+			    SUMX(fact_cargo_movements,fact_cargo_movements[container_count]),
+			    SUMX(fact_cargo_movements,fact_cargo_movements[move_duration (days)])
+			)
+		formatString: 0
+		lineageTag: 0eb34865-4330-4bd3-bb84-8a037db5e045
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Efficiency Score' =
+			
+			VAR EfficientMovements =
+			    CALCULATE(
+			        COUNTROWS(fact_cargo_movements),
+			        fact_cargo_movements[Performance Flag] IN {
+			            "Peak",
+			            "Efficient",
+			            "Repositioning"
+			        }
+			    )
+			VAR TotalMovements =
+			    CALCULATE(
+			        COUNTROWS(fact_cargo_movements),
+			        fact_cargo_movements[Performance Flag] <> "Unverified"
+			    )
+			RETURN
+			DIVIDE(EfficientMovements, TotalMovements)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e5fcc2c9-ec8f-4610-bc5c-3eece3d36056
+
+	measure 'active vessels' =
+			CALCULATE(
+			    COUNTROWS(dim_vessel),dim_vessel[Vessel Status]  = "Active")
+		formatString: #,0
+		lineageTag: 433fdd4b-d850-4784-b790-1a567085dafb
+
+	measure 'Movements per Terminal' =
+			
+			CALCULATE(
+			    [Total Movements],
+			    ALLEXCEPT(dim_terminal, dim_terminal[terminal_id])
+			)
+		formatString: 0
+		lineageTag: 29e85bef-9470-47ee-aeb9-db91a0682bfd
+
+	measure 'Count of Bottlenecks' =
+			
+			CALCULATE(
+			    [Total Movements],
+			    NOT fact_cargo_movements[Performance Flag] IN {
+			        "Peak",
+			        "Efficient",
+			        "Repositioning",
+			        "Unverified"
+			    }
+			)
+		formatString: #,0
+		lineageTag: cbf38f72-34d9-4ef9-8d32-40f3a4acf31e
+
+	measure 'Total Move_duration' = SUM(fact_cargo_movements[move_duration (days)])
+		lineageTag: 727684a9-62b5-4706-a3e9-8a3208d77422
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Inactive vessels' = CALCULATE( [Total Vessel], dim_vessel[Vessel Status] <> "Active")
+		lineageTag: 8a6f19d7-5c1d-43ed-ac78-744482d5c284
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Vessel' = COUNTA(dim_vessel[vessel_key])
+		formatString: #,0
+		lineageTag: 1fe19329-f6dc-469c-935b-404c4afdc571
+
+	measure 'Selected Metric Value' =
+			
+			-- This 'Parameter' should be the name of the Field Parameter column you created
+			SELECTEDMEASURE()
+		lineageTag: 3a944750-9cc9-4d7f-b5e7-b19914a77421
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Highlight MAX' = ```
+			
+			VAR _CurrentValue = [Selected Metric Value]
+			VAR _AllValuesOnTrend = 
+			    CALCULATETABLE(
+			        ADDCOLUMNS(
+			            ALLSELECTED('dim_time'[date]), -- Use your date column here
+			            "@Val", [Selected Metric Value]
+			        ),
+			        ALLSELECTED('dim_time')
+			    )
+			VAR _MaxVal = MAXX(_AllValuesOnTrend, [@Val])
+			
+			RETURN
+			IF(_CurrentValue = _MaxVal, _CurrentValue, BLANK())
+			```
+		lineageTag: de2dd96c-aaff-43dd-bba5-13066a95c7f2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Highlight MIN' = ```
+			
+			VAR _CurrentValue = [Selected Metric Value]
+			VAR _AllValuesOnTrend = 
+			    CALCULATETABLE(
+			        ADDCOLUMNS(
+			            ALLSELECTED('dim_time'[date]),
+			            "@Val", [Selected Metric Value]
+			        ),
+			        ALLSELECTED('dim_time')
+			    )
+			VAR _MinVal = MINX(_AllValuesOnTrend, [@Val])
+			
+			RETURN
+			IF(_CurrentValue = _MinVal, _CurrentValue, BLANK())
+			```
+		lineageTag: 4d44fe86-a747-4198-9393-ebfa5d098038
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column **
+		dataType: string
+		isHidden
+		lineageTag: 11ddd2c4-686d-4b0d-bb53-c3886925a5ef
+		summarizeBy: none
+		sourceColumn: **
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"**" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"**", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

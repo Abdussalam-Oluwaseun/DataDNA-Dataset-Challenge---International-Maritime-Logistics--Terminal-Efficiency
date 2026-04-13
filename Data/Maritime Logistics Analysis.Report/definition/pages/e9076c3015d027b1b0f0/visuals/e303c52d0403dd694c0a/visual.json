@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "e303c52d0403dd694c0a",
+  "position": {
+    "x": 40.5874840357599,
+    "y": 287.21283451224849,
+    "z": 0,
+    "height": 579.04003905096988,
+    "width": 1498.2579821200511,
+    "tabOrder": 10000
+  },
+  "visualGroup": {
+    "displayName": "vessels",
+    "groupMode": "ScaleMode"
+  }
+}

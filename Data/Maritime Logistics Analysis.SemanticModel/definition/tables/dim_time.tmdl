@@ -1,0 +1,94 @@
+table dim_time
+	lineageTag: e04b131a-f377-4d15-854d-a933561fc992
+	dataCategory: Time
+
+	column date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: 3b050f1d-982d-43ce-9477-b3933820f5cb
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column fiscal_year
+		dataType: int64
+		formatString: 0
+		lineageTag: af8d510c-f07c-410c-9f6a-45f542bd8dac
+		summarizeBy: none
+		sourceColumn: fiscal_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: 9cba0ec2-fb97-48f3-84ad-b8547b06460a
+		summarizeBy: none
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: int64
+		formatString: 0
+		lineageTag: de31897e-7eda-4d64-a449-8855af9ac125
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column week
+		dataType: int64
+		formatString: 0
+		lineageTag: 2b313527-eee2-4318-8739-8ad78c15ae1f
+		summarizeBy: none
+		sourceColumn: week
+
+		annotation SummarizationSetBy = Automatic
+
+	column shift
+		dataType: string
+		lineageTag: e8198984-2f1c-475e-821b-f5e97947bec3
+		summarizeBy: none
+		sourceColumn: shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'month name' = FORMAT(dim_time[date],"MMM")
+		lineageTag: 59d51c71-b41f-4820-8dbe-9247631eb20e
+		summarizeBy: none
+		sortByColumn: month
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'month year' = FORMAT(dim_time[date],"MMM-YYYY")
+		lineageTag: 22fcf619-a573-4a17-b230-dad9aebf81a3
+		summarizeBy: none
+		sortByColumn: month
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_time = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("\\Mac\Home\Downloads\DataDNA Dataset Challenge - International Maritime Logistics  Terminal Efficiency\Data\International Maritime Logistics Terminal Efficiency.xlsx"), null, true),
+				    dim_time_Sheet = Source{[Item="dim_time",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(dim_time_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"date_id", type date}, {"fiscal_year", Int64.Type}, {"quarter", Int64.Type}, {"month", Int64.Type}, {"week", Int64.Type}, {"shift", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"date_id", "date"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
