@@ -42,12 +42,12 @@
                       "Entity": "_measures"
                     }
                   },
-                  "Property": "Total Move_duration"
+                  "Property": "Throughput"
                 }
               },
-              "queryRef": "_measures.Total Move_duration",
-              "nativeQueryRef": "Total Move_duration",
-              "displayName": "Total Move_duration"
+              "queryRef": "_measures.Throughput",
+              "nativeQueryRef": "Throughput",
+              "displayName": "Throughput"
             }
           ],
           "fieldParameters": [
@@ -180,7 +180,7 @@
             "displayName": {
               "expr": {
                 "Literal": {
-                  "Value": "'Max line 1'"
+                  "Value": "'Max'"
                 }
               }
             },
@@ -227,7 +227,26 @@
             "dataLabelText": {
               "expr": {
                 "Literal": {
-                  "Value": "'Value'"
+                  "Value": "'ValueAndName'"
+                }
+              }
+            },
+            "lineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }
@@ -249,7 +268,7 @@
             "displayName": {
               "expr": {
                 "Literal": {
-                  "Value": "'Max line 2'"
+                  "Value": "'Max'"
                 }
               }
             },
@@ -299,6 +318,32 @@
                   "Value": "'right'"
                 }
               }
+            },
+            "lineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "dataLabelText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'ValueAndName'"
+                }
+              }
             }
           },
           "selector": {
@@ -318,7 +363,7 @@
             "displayName": {
               "expr": {
                 "Literal": {
-                  "Value": "'Max line 3'"
+                  "Value": "'Max'"
                 }
               }
             },
@@ -354,6 +399,44 @@
                   "Value": "1D"
                 }
               }
+            },
+            "dataLabelColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "lineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "dataLabelText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'ValueAndName'"
+                }
+              }
             }
           },
           "selector": {
@@ -373,7 +456,7 @@
             "displayName": {
               "expr": {
                 "Literal": {
-                  "Value": "'Max line 4'"
+                  "Value": "'Max'"
                 }
               }
             },
@@ -409,6 +492,32 @@
                   "Value": "'right'"
                 }
               }
+            },
+            "lineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "dataLabelText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'ValueAndName'"
+                }
+              }
             }
           },
           "selector": {
@@ -428,7 +537,7 @@
             "displayName": {
               "expr": {
                 "Literal": {
-                  "Value": "'Max line 5'"
+                  "Value": "'Max'"
                 }
               }
             },
@@ -471,6 +580,32 @@
                   "Value": "0D"
                 }
               }
+            },
+            "lineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "dataLabelText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'ValueAndName'"
+                }
+              }
             }
           },
           "selector": {
@@ -490,7 +625,7 @@
             "displayName": {
               "expr": {
                 "Literal": {
-                  "Value": "'Min line 1'"
+                  "Value": "'Min'"
                 }
               }
             },
@@ -533,6 +668,32 @@
                   "Value": "'under'"
                 }
               }
+            },
+            "dataLabelText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'ValueAndName'"
+                }
+              }
+            },
+            "lineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
             }
           },
           "selector": {
@@ -552,7 +713,7 @@
             "displayName": {
               "expr": {
                 "Literal": {
-                  "Value": "'Min line 2'"
+                  "Value": "'Min'"
                 }
               }
             },
@@ -593,6 +754,32 @@
               "expr": {
                 "Literal": {
                   "Value": "'under'"
+                }
+              }
+            },
+            "lineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "dataLabelText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'ValueAndName'"
                 }
               }
             }

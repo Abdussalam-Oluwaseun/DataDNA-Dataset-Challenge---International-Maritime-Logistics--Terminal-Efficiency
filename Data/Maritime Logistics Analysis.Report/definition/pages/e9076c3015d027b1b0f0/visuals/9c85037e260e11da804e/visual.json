@@ -12,6 +12,5 @@
   "visualGroup": {
     "displayName": "movement",
     "groupMode": "ScaleMode"
-  },
-  "isHidden": true
+  }
 }

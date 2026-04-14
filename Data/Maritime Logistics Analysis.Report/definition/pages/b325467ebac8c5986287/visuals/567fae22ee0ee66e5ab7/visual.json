@@ -94,7 +94,7 @@
                 "Function": 0
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ]
       }
@@ -201,7 +201,7 @@
                           "min": {
                             "color": {
                               "Literal": {
-                                "Value": "'#e9b39d'"
+                                "Value": "'#FED0BD'"
                               }
                             }
                           },
@@ -251,7 +251,7 @@
                           "min": {
                             "color": {
                               "Literal": {
-                                "Value": "'#e9b39d'"
+                                "Value": "'#FED0BD'"
                               }
                             }
                           },
@@ -620,7 +620,7 @@
                   "color": {
                     "expr": {
                       "Literal": {
-                        "Value": "'#212121'"
+                        "Value": "'#333333'"
                       }
                     }
                   }

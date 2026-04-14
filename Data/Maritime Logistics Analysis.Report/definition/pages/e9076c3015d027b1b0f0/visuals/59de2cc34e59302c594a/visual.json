@@ -200,10 +200,10 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "dim_vessel"
+                    "Entity": "fact_cargo_movements"
                   }
                 },
-                "Property": "vessel_category"
+                "Property": "date"
               }
             },
             "direction": "Ascending"
@@ -231,7 +231,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "135.4726716107874D"
+                  "Value": "130.85015401646774D"
                 }
               }
             }
@@ -245,7 +245,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "145.18945043372668D"
+                  "Value": "140.55686980114604D"
                 }
               }
             }
@@ -259,7 +259,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "153.23837947818072D"
+                  "Value": "169.44854026093486D"
                 }
               }
             }
@@ -301,7 +301,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "151.94463707723855D"
+                  "Value": "148.46427886294353D"
                 }
               }
             }
@@ -315,7 +315,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "72.73366338628198D"
+                  "Value": "66.91364695831395D"
                 }
               }
             }
@@ -519,6 +519,13 @@
               "expr": {
                 "Literal": {
                   "Value": "120D"
+                }
+              }
+            },
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

@@ -12,5 +12,6 @@
   "visualGroup": {
     "displayName": "vessels",
     "groupMode": "ScaleMode"
-  }
+  },
+  "isHidden": true
 }

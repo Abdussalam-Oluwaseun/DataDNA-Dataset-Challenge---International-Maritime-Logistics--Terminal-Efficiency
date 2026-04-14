@@ -87,7 +87,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''_measures''[Total Move_duration]'"
+                                "Value": "'''_measures''[Throughput]'"
                               }
                             }
                           ]
@@ -115,7 +115,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''_measures''[Total Move_duration]'"
+                                      "Value": "'''_measures''[Throughput]'"
                                     }
                                   }
                                 ]
@@ -139,7 +139,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "Total Move_duration"
+                            "0": "Throughput"
                           }
                         ]
                       }

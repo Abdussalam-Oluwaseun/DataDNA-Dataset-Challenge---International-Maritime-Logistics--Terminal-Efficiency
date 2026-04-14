@@ -29,6 +29,21 @@
               "queryRef": "dim_time.fiscal_year",
               "nativeQueryRef": "fiscal_year",
               "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_time"
+                    }
+                  },
+                  "Property": "month name"
+                }
+              },
+              "queryRef": "dim_time.month name",
+              "nativeQueryRef": "month name",
+              "active": false
             }
           ]
         }
